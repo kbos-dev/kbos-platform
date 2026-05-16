@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="KBOS favicon">
+  <title>KBOS favicon</title>
+  <rect width="256" height="256" rx="48" fill="#0B0F14"/>
+  <g fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M72 54 V112" stroke-width="16"/>
+    <path d="M72 144 V202" stroke-width="16"/>
+    <path d="M72 54 H116" stroke-width="16"/>
+    <path d="M72 202 H116" stroke-width="16"/>
+    <path d="M103 128 H145" stroke-width="14"/>
+    <path d="M145 128 L188 85" stroke-width="14"/>
+    <path d="M145 128 L188 171" stroke-width="14"/>
+  </g>
+</svg>

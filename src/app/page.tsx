@@ -1,65 +1,191 @@
-import Image from "next/image";
+const runtimeLayers = [
+  "Governance",
+  "Replay",
+  "Registry",
+  "Routing",
+  "Isolation",
+];
+
+const platformSurfaces = [
+  "Runtime shell",
+  "Replay records",
+  "Governance checks",
+  "Operational traces",
+  "Status surfaces",
+];
+
+const principles = [
+  {
+    title: "Replayable operations",
+    body: "Every important action should leave enough evidence to understand what happened, why it happened, and what changed.",
+  },
+  {
+    title: "Bounded execution",
+    body: "KBOS favors explicit limits, visible state, and governed pathways over hidden automation or open-ended behavior.",
+  },
+  {
+    title: "Recoverable systems",
+    body: "Operational infrastructure should support review, recovery, and continuity when systems change or fail.",
+  },
+];
+
+function KBOSMark({ active = false }: { active?: boolean }) {
+  return (
+    <svg
+      className={active ? "kbos-mark kbos-mark-active" : "kbos-mark"}
+      viewBox="0 0 256 256"
+      aria-label="KBOS mark"
+      role="img"
+    >
+      <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <path className="mark-spine" d="M72 54 V112" />
+        <path className="mark-spine" d="M72 144 V202" />
+        <path className="mark-frame" d="M72 54 H116" />
+        <path className="mark-frame" d="M72 202 H116" />
+        <path className="mark-route" d="M103 128 H145" />
+        <path className="mark-route" d="M145 128 L188 85" />
+        <path className="mark-route" d="M145 128 L188 171" />
+      </g>
+    </svg>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="site-shell">
+      <section className="hero-grid">
+        <div className="hero-copy">
+          <div className="eyebrow">
+            <span className="status-dot" />
+            KBOS.dev
+          </div>
+
+          <h1>Governed Runtime Infrastructure</h1>
+
+          <p className="hero-subtitle">
+            Deterministic execution. Replayable operations. Operational
+            visibility built into the runtime itself.
           </p>
+
+          <p className="hero-note">
+            Designed for systems that must remain observable, recoverable, and
+            governed under real operational pressure.
+          </p>
+
+          <div className="hero-actions">
+            <a href="#runtime" className="primary-link">
+              View Runtime Shell
+            </a>
+            <a href="#architecture" className="secondary-link">
+              Explore Architecture
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="runtime-card" aria-label="KBOS runtime preview">
+          <div className="card-header">
+            <span>runtime.governance</span>
+            <span className="card-state">ACTIVE</span>
+          </div>
+
+          <div className="mark-stage">
+            <KBOSMark active />
+          </div>
+
+          <div className="trace-log">
+            <div>
+              <span className="muted">trace_id</span>
+              <span>kbos.route.0001</span>
+            </div>
+            <div>
+              <span className="muted">authority</span>
+              <span>governed</span>
+            </div>
+            <div>
+              <span className="muted">state</span>
+              <span className="blue">checkpoint resolved</span>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section id="runtime" className="section-block">
+        <div className="section-heading">
+          <p className="eyebrow">Operational Model</p>
+          <h2>
+            Built for systems that must stay visible through change, failure,
+            and scale.
+          </h2>
+        </div>
+
+        <div className="principle-grid inner-grid">
+          {principles.map((item) => (
+            <article className="principle-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="architecture" className="section-block">
+        <div className="section-heading">
+          <p className="eyebrow">Runtime Architecture</p>
+          <h2>
+            Authority, replay, routing, and isolation are treated as operating
+            requirements.
+          </h2>
+        </div>
+
+        <div className="layer-strip">
+          {runtimeLayers.map((layer, index) => (
+            <div className="layer-card" key={layer}>
+              <span className="layer-index">0{index + 1}</span>
+              <span>{layer}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section-block">
+        <div className="section-heading">
+          <p className="eyebrow">Platform Surfaces</p>
+          <h2>
+            The interface stays downstream from runtime truth, receipts, and
+            observable state.
+          </h2>
+        </div>
+
+        <div className="forge-grid">
+          {platformSurfaces.map((surface) => (
+            <div className="forge-card" key={surface}>
+              <KBOSMark />
+              <span>{surface}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="console-panel">
+        <div className="console-top">
+          <span>KBOS runtime console</span>
+          <span>monochrome identity / cobalt active state</span>
+        </div>
+
+        <pre>
+{`> kbos run --trace
+authority: governed
+route: resolved
+checkpoint: passed
+receipt: written
+status: observable`}
+        </pre>
+      </section>
+
+      <footer>
+        <span>KBOS</span>
+        <span>Composed Infrastructure Intelligence</span>
+      </footer>
+    </main>
   );
 }
