@@ -1,0 +1,14 @@
+﻿@import "../styles/public-site-polish.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}

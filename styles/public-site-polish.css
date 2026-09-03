@@ -1,0 +1,930 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --kbos-ink: #07111f;
+  --kbos-muted: #445266;
+  --kbos-soft: #f5f7fa;
+  --kbos-line: rgba(148,163,184,0.35);
+  --kbos-panel: rgba(255,255,255,0.94);
+  --kbos-shadow: 0 28px 90px rgba(15,23,42,0.13);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #eef2f7;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--kbos-ink);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(148,163,184,0.34), transparent 34rem),
+    linear-gradient(180deg, #f8fafc 0%, #e8edf5 100%);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-rendering: geometricPrecision;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 84% 8%, rgba(15,23,42,0.10), transparent 30rem),
+    linear-gradient(180deg, rgba(248,250,252,0.96), rgba(238,242,247,0.96));
+}
+
+.kbos-shell {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 34px 0 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.kbos-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--kbos-line);
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(22px);
+  box-shadow: 0 1px 0 rgba(15,23,42,0.04);
+}
+
+.kbos-nav-inner {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.kbos-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.kbos-brand-img {
+  width: 188px;
+  height: auto;
+  display: block;
+}
+
+.kbos-brand-kicker {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #7b8798;
+}
+
+.kbos-brand-sub {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.kbos-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.kbos-nav-link {
+  font-size: 14px;
+  font-weight: 650;
+  color: #526075;
+}
+
+.kbos-nav-link:hover {
+  color: #07111f;
+}
+
+.kbos-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kbos-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #a7f3d0;
+  background: #ecfdf5;
+  color: #047857;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.kbos-button-primary,
+.kbos-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  padding: 15px 22px;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1;
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+
+.kbos-button-primary {
+  background: linear-gradient(135deg, #07111f, #172033);
+  color: #ffffff;
+  box-shadow: 0 18px 42px rgba(15,23,42,0.22);
+}
+
+.kbos-button-secondary {
+  border: 1px solid var(--kbos-line);
+  background: rgba(255,255,255,0.86);
+  color: #172033;
+  box-shadow: 0 10px 26px rgba(15,23,42,0.07);
+}
+
+.kbos-button-primary:hover,
+.kbos-button-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.kbos-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--kbos-line);
+  border-radius: 42px;
+  background:
+    radial-gradient(circle at 86% 16%, rgba(15,23,42,0.08), transparent 28rem),
+    linear-gradient(180deg, rgba(255,255,255,0.97), rgba(248,250,252,0.94));
+  box-shadow: var(--kbos-shadow);
+}
+
+.kbos-hero {
+  padding: 72px 64px;
+}
+
+.kbos-section {
+  padding: 58px 56px;
+}
+
+.kbos-kicker {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--kbos-line);
+  background: rgba(255,255,255,0.78);
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #64748b;
+  box-shadow: 0 10px 26px rgba(15,23,42,0.05);
+}
+
+.kbos-hero-title {
+  max-width: 980px;
+  margin: 30px 0 0;
+  font-size: clamp(48px, 7vw, 86px);
+  line-height: 0.94;
+  letter-spacing: -0.07em;
+  font-weight: 780;
+  color: var(--kbos-ink);
+}
+
+.kbos-section-title {
+  margin: 28px 0 0;
+  font-size: clamp(38px, 5vw, 68px);
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+  font-weight: 760;
+  color: var(--kbos-ink);
+}
+
+.kbos-lede {
+  max-width: 820px;
+  margin: 30px 0 0;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.65;
+  color: var(--kbos-muted);
+}
+
+.kbos-actions {
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.kbos-proof-grid {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.kbos-proof-card {
+  border: 1px solid var(--kbos-line);
+  border-radius: 26px;
+  background: rgba(248,250,252,0.78);
+  padding: 24px;
+  box-shadow: 0 14px 34px rgba(15,23,42,0.06);
+}
+
+.kbos-proof-label {
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.kbos-proof-text {
+  margin: 14px 0 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--kbos-muted);
+}
+
+.kbos-two-col {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 44px;
+  align-items: end;
+}
+
+.kbos-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 40px;
+}
+
+.kbos-footer-logo {
+  width: 188px;
+  height: auto;
+  display: block;
+}
+
+.kbos-boundary-box {
+  border: 1px solid var(--kbos-line);
+  border-radius: 30px;
+  background: rgba(248,250,252,0.88);
+  padding: 28px;
+}
+
+.kbos-boundary-list {
+  margin: 20px 0 0;
+  padding-left: 18px;
+  color: var(--kbos-muted);
+  line-height: 1.9;
+  font-size: 15px;
+}
+
+.kbos-footer-bottom {
+  margin-top: 36px;
+  padding-top: 22px;
+  border-top: 1px solid var(--kbos-line);
+  font-size: 14px;
+  color: #64748b;
+}
+
+@media (max-width: 980px) {
+  .kbos-brand-copy,
+  .kbos-nav-links,
+  .kbos-pill {
+    display: none;
+  }
+
+  .kbos-hero,
+  .kbos-section {
+    padding: 48px 28px;
+    border-radius: 32px;
+  }
+
+  .kbos-proof-grid,
+  .kbos-two-col,
+  .kbos-footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kbos-shell,
+  .kbos-nav-inner {
+    width: min(100% - 24px, 1180px);
+  }
+}
+
+.kbos-public-main {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 18% 4%, rgba(15,23,42,0.10), transparent 30rem),
+    radial-gradient(circle at 82% 12%, rgba(100,116,139,0.16), transparent 34rem),
+    linear-gradient(180deg, #f8fafc 0%, #eef2f7 46%, #e8edf5 100%);
+}
+
+.kbos-atmosphere {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(90deg, rgba(15,23,42,0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(15,23,42,0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at 50% 14%, black, transparent 72%);
+}
+
+.kbos-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 38px 0 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.kbos-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.76), transparent 42%),
+    radial-gradient(circle at 94% 8%, rgba(15,23,42,0.08), transparent 22rem);
+}
+
+.kbos-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.kbos-hero {
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kbos-hero-title {
+  text-wrap: balance;
+}
+
+.kbos-lede {
+  text-wrap: pretty;
+}
+
+.kbos-proof-card h3 {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: -0.03em;
+  color: var(--kbos-ink);
+}
+
+@media (max-width: 980px) {
+  .kbos-shell {
+    width: min(100% - 24px, 1180px);
+    padding-top: 24px;
+  }
+
+  .kbos-hero {
+    min-height: auto;
+  }
+}
+
+/* PVR V2.5 atmosphere + premium depth pass */
+
+.kbos-public-main::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(15,23,42,0.11), transparent 42rem),
+    radial-gradient(circle at 8% 28%, rgba(100,116,139,0.13), transparent 34rem),
+    radial-gradient(circle at 92% 38%, rgba(15,23,42,0.08), transparent 30rem);
+}
+
+.kbos-shell {
+  padding-top: 64px;
+  padding-bottom: 96px;
+  gap: 54px;
+}
+
+.kbos-card {
+  border: 1px solid rgba(255,255,255,0.74);
+  background:
+    radial-gradient(circle at 92% 10%, rgba(15,23,42,0.065), transparent 26rem),
+    linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,250,252,0.86));
+  box-shadow:
+    0 36px 110px rgba(15,23,42,0.13),
+    0 10px 36px rgba(15,23,42,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.kbos-hero {
+  padding: 88px 76px;
+  min-height: 700px;
+}
+
+.kbos-hero-title {
+  max-width: 900px;
+}
+
+.kbos-lede {
+  max-width: 860px;
+}
+
+.kbos-proof-card {
+  border: 1px solid rgba(255,255,255,0.72);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.9), rgba(248,250,252,0.78));
+  box-shadow:
+    0 20px 58px rgba(15,23,42,0.09),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.kbos-kicker {
+  background: rgba(255,255,255,0.92);
+}
+
+@media (max-width: 980px) {
+  .kbos-shell {
+    padding-top: 32px;
+    padding-bottom: 64px;
+    gap: 32px;
+  }
+
+  .kbos-hero {
+    padding: 54px 30px;
+    min-height: auto;
+  }
+}
+
+/* PVR V2.6 KBOS visual language primitives */
+
+.kbos-doctrine-strip {
+  position: sticky;
+  top: 76px;
+  z-index: 45;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  padding: 10px 18px;
+  border-bottom: 1px solid rgba(148,163,184,0.22);
+  background: rgba(248,250,252,0.78);
+  backdrop-filter: blur(18px);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.kbos-doctrine-strip span::before {
+  content: "";
+  margin-right: 18px;
+  color: #94a3b8;
+}
+
+.kbos-doctrine-strip span:first-child::before {
+  content: "";
+  margin-right: 0;
+}
+
+.kbos-evidence-marker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  border: 1px solid rgba(148,163,184,0.32);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.82);
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #64748b;
+  box-shadow: 0 10px 28px rgba(15,23,42,0.05);
+}
+
+.kbos-review-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.kbos-review-link span {
+  transition: transform 160ms ease;
+}
+
+.kbos-review-link:hover span {
+  transform: translateX(3px);
+}
+
+.kbos-boundary-section {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,0.74);
+  border-radius: 42px;
+  padding: 46px 52px;
+  background:
+    radial-gradient(circle at 90% 20%, rgba(15,23,42,0.07), transparent 24rem),
+    linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,250,252,0.84));
+  box-shadow:
+    0 30px 90px rgba(15,23,42,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.kbos-boundary-section h2 {
+  margin: 20px 0 0;
+  max-width: 560px;
+  font-size: clamp(32px, 4vw, 54px);
+  line-height: 1;
+  letter-spacing: -0.055em;
+  color: var(--kbos-ink);
+}
+
+.kbos-boundary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.kbos-boundary-grid div {
+  border: 1px solid rgba(148,163,184,0.24);
+  border-radius: 22px;
+  background: rgba(255,255,255,0.72);
+  padding: 18px 20px;
+  font-size: 15px;
+  font-weight: 750;
+  color: #334155;
+}
+
+@media (max-width: 980px) {
+  .kbos-doctrine-strip {
+    top: 0;
+    flex-wrap: wrap;
+    gap: 10px;
+    letter-spacing: 0.14em;
+  }
+
+  .kbos-boundary-section,
+  .kbos-boundary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kbos-boundary-section {
+    padding: 34px 26px;
+  }
+}
+
+/* KBOS TINY PASS 01  DOCTRINE SIGNATURE RAIL ONLY */
+.kbos-doctrine-strip {
+  box-shadow:
+    0 10px 28px rgba(15,23,42,0.055),
+    inset 0 -1px 0 rgba(37,99,235,0.16) !important;
+}
+
+.kbos-doctrine-strip::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(15,23,42,0.24), rgba(37,99,235,0.24), transparent);
+  pointer-events: none;
+}
+/* KBOS TINY PASS 01 END */
+
+/* KBOS TINY PASS 02  PROOF CARD SIGNATURE ONLY */
+.kbos-proof-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.kbos-proof-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 22px;
+  bottom: 22px;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(15,23,42,0.18), rgba(37,99,235,0.14), rgba(15,23,42,0.06));
+  pointer-events: none;
+}
+
+.kbos-proof-card > * {
+  position: relative;
+  z-index: 1;
+}
+/* KBOS TINY PASS 02 END */
+
+/* KBOS TINY PASS 03  BOUNDARY SIGNATURE ONLY */
+.kbos-boundary-box,
+.kbos-boundary-grid div {
+  position: relative;
+  overflow: hidden;
+}
+
+.kbos-boundary-box::before,
+.kbos-boundary-grid div::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(15,23,42,0.16), rgba(37,99,235,0.12), rgba(15,23,42,0.05));
+  pointer-events: none;
+}
+
+.kbos-boundary-box > *,
+.kbos-boundary-grid div > * {
+  position: relative;
+  z-index: 1;
+}
+/* KBOS TINY PASS 03 END */
+
+/* KBOS TINY PASS 04  LOGO ASPECT RATIO WARNING FIX ONLY */
+.kbos-brand-img,
+.kbos-footer-logo {
+  height: auto !important;
+}
+/* KBOS TINY PASS 04 END */
+
+/* KBOS TINY PASS 06  KICKER DOT SIGNATURE ONLY */
+.kbos-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kbos-kicker::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(15,23,42,0.28);
+  background: radial-gradient(circle, rgba(37,99,235,0.22), rgba(255,255,255,0.92));
+  flex: 0 0 auto;
+}
+/* KBOS TINY PASS 06 END */
+
+
+/* KBOS HERO SIGNATURE PASS 01  CONTINUITY RAIL ONLY */
+.kbos-hero-continuity-rail {
+  position: relative;
+  width: min(640px, 100%);
+  height: 1px;
+  margin-top: 26px;
+  margin-bottom: -2px;
+  background: linear-gradient(
+    90deg,
+    rgba(15,23,42,0.00),
+    rgba(15,23,42,0.22),
+    rgba(37,99,235,0.18),
+    rgba(15,23,42,0.08),
+    rgba(15,23,42,0.00)
+  );
+}
+
+.kbos-hero-continuity-rail span {
+  position: absolute;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(15,23,42,0.20);
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 0 0 4px rgba(248,250,252,0.82);
+}
+
+.kbos-hero-continuity-rail span:nth-child(1) {
+  left: 18%;
+}
+
+.kbos-hero-continuity-rail span:nth-child(2) {
+  left: 52%;
+}
+
+.kbos-hero-continuity-rail span:nth-child(3) {
+  left: 82%;
+}
+/* KBOS HERO SIGNATURE PASS 01 END */
+
+/* KBOS FOOTER TRUST CLOSURE PASS 01 */
+.kbos-footer-signature {
+  position: relative;
+}
+
+.kbos-footer-trust-rail {
+  position: relative;
+  width: min(520px, 100%);
+  height: 1px;
+  margin-bottom: 34px;
+  background: linear-gradient(
+    90deg,
+    rgba(15,23,42,0.00),
+    rgba(15,23,42,0.20),
+    rgba(37,99,235,0.16),
+    rgba(15,23,42,0.08),
+    rgba(15,23,42,0.00)
+  );
+}
+
+.kbos-footer-trust-rail span {
+  position: absolute;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(15,23,42,0.18);
+  background: rgba(255,255,255,0.94);
+  box-shadow: 0 0 0 4px rgba(248,250,252,0.78);
+}
+
+.kbos-footer-trust-rail span:nth-child(1) {
+  left: 16%;
+}
+
+.kbos-footer-trust-rail span:nth-child(2) {
+  left: 50%;
+}
+
+.kbos-footer-trust-rail span:nth-child(3) {
+  left: 84%;
+}
+
+.kbos-footer-truth-line {
+  margin-top: 24px;
+  width: fit-content;
+  max-width: 760px;
+  border: 1px solid rgba(148,163,184,0.28);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.78);
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #64748b;
+  box-shadow: 0 12px 30px rgba(15,23,42,0.055);
+}
+
+.kbos-footer-boundary-box {
+  box-shadow:
+    0 24px 70px rgba(15,23,42,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.72);
+}
+
+@media (max-width: 980px) {
+  .kbos-footer-truth-line {
+    border-radius: 22px;
+    line-height: 1.7;
+  }
+}
+/* KBOS FOOTER TRUST CLOSURE PASS 01 END */
+
+/* Healthcare public lane normalization */
+.public-lane {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 72px 0;
+}
+
+.public-lane-hero {
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 28px;
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+}
+
+.public-lane-hero .eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: 12px;
+  opacity: .72;
+  margin-bottom: 16px;
+}
+
+.public-lane-hero h1 {
+  font-size: clamp(40px, 7vw, 76px);
+  line-height: .95;
+  margin: 0;
+}
+
+.public-lane-hero .lede {
+  max-width: 780px;
+  margin-top: 24px;
+  font-size: 18px;
+  line-height: 1.65;
+  opacity: .82;
+}
+
+.continuity-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 28px 0;
+}
+
+.continuity-step {
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 20px;
+  padding: 18px;
+  background: rgba(255,255,255,.04);
+}
+
+.continuity-step span {
+  display: block;
+  font-size: 12px;
+  opacity: .55;
+  margin-bottom: 10px;
+}
+
+.public-lane-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 28px 0;
+}
+
+.public-lane-grid article,
+.scenario-card,
+.boundary-panel {
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 24px;
+  padding: 24px;
+  background: rgba(255,255,255,.035);
+}
+
+.public-lane-grid h2,
+.scenario-card h2,
+.boundary-panel h2 {
+  margin-top: 0;
+}
+
+.scenario-card ol {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.scenario-card li {
+  margin: 12px 0;
+  line-height: 1.55;
+}
+
+.boundary-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.boundary-list span {
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,.04);
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .continuity-flow,
+  .public-lane-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .public-lane-hero {
+    padding: 28px;
+  }
+}
